@@ -1,7 +1,6 @@
 import React from "react";
 
 import { AlertProvider } from "./AlertProvider";
-import { LanguageProvider } from "./LanguageProvider";
 import { RestaurantProvider } from "./RestaurantProvider";
 
 const ProviderComposer = ({ contexts, children }) =>
@@ -14,9 +13,7 @@ const ProviderComposer = ({ contexts, children }) =>
   );
 
 const ContextProvider = ({ children }) => (
-  <ProviderComposer
-    contexts={[<AlertProvider />, <LanguageProvider />, <RestaurantProvider />]}
-  >
+  <ProviderComposer contexts={[<AlertProvider />, <RestaurantProvider />]}>
     {children}
   </ProviderComposer>
 );
