@@ -1,7 +1,7 @@
 import React from "react";
 
 import { AlertProvider } from "./AlertProvider";
-import { LoginProvider } from "./LoginProvider";
+import { LanguageProvider } from "./LanguageProvider";
 
 const ProviderComposer = ({ contexts, children }) =>
   contexts.reduceRight(
@@ -12,8 +12,8 @@ const ProviderComposer = ({ contexts, children }) =>
     children
   );
 
-const ContextProvider = children => (
-  <ProviderComposer contexts={[<AlertProvider />, <LoginProvider />]}>
+const ContextProvider = ({ children }) => (
+  <ProviderComposer contexts={[<AlertProvider />, <LanguageProvider />]}>
     {children}
   </ProviderComposer>
 );
