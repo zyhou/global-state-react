@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const SelectList = ({ items, value }) => {
+const SelectList = ({ items, value, onChange }) => {
   const [isOpenSelect, setIsOpenSelect] = useState(false);
-  const [currentValue, setCurrentValue] = useState(value);
 
   const onClick = event => {
     if (event.target.nodeName.toLowerCase() === "select") {
@@ -11,8 +10,8 @@ const SelectList = ({ items, value }) => {
     setIsOpenSelect(true);
   };
 
-  const onChange = event => {
-    setCurrentValue(event.target.value);
+  const onChangeSelect = event => {
+    onChange(event.target.value);
     setIsOpenSelect(false);
   };
 
@@ -24,12 +23,12 @@ const SelectList = ({ items, value }) => {
       onClick={onClick}
     >
       <span className={`placeholder  ${isOpenSelect ? "hidden" : ""}`}>
-        {currentValue}
+        {value}
       </span>
       <span className="input">
         <select
           className={`fancy-select ${!isOpenSelect ? "hidden" : ""}`}
-          onChange={onChange}
+          onChange={onChangeSelect}
         >
           {items.map(item => (
             <Option key={item} item={item} />

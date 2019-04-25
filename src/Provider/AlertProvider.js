@@ -5,36 +5,25 @@ export const AlertContext = createContext({});
 const AlertProvider = ({ children }) => {
   const [alert, setAlert] = useState({
     text: "",
-    type: "success",
     active: false
   });
-
-  const resetAlert = () => {
-    setAlert({
-      text: "",
-      type: "success",
-      active: false
-    });
-  };
 
   const sendAlert = text => {
     setAlert({
       text,
-      type: "success",
       active: true
     });
   };
 
-  const sendError = text => {
+  const resetAlert = () => {
     setAlert({
-      text,
-      type: "error",
-      active: true
+      text: "",
+      active: false
     });
   };
 
   return (
-    <AlertContext.Provider value={{ alert, resetAlert, sendAlert, sendError }}>
+    <AlertContext.Provider value={{ alert, sendAlert, resetAlert }}>
       {children}
     </AlertContext.Provider>
   );
